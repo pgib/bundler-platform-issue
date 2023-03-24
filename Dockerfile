@@ -9,4 +9,4 @@ WORKDIR /root
 
 COPY Gemfile .
 COPY Gemfile-$RUBYGEMS_VERSION.lock ./Gemfile.lock
-COPY test.sh .
+COPY entrypoint.sh .

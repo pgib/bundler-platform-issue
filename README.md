@@ -7,19 +7,22 @@ Essentially what seems to be happening is that when `ruby` is a listed platform 
 ### Requirements
 
 * Docker
-* make
 
 ### Running
 
 ```
-make
+./run.sh
 ```
+
+(To force a particular platform, uncomment the appropriate `PLATFORM_ARG="..."` line inside `run.sh`. I'm on an ARM platform, but the same issue occurs when I force x86_64.)
 
 ### Output
 
 ```
-% make
-Bundler 2.4.7 test...
+% ./run.sh
+===============================================================
+
+Building Docker image for Rubygems 3.4.7...
 Doing initial bundle...
 PLATFORMS
   ruby
@@ -28,8 +31,20 @@ Doing second bundle after adding gem...
 PLATFORMS
   ruby
 
---------------------------------------------------------------------------
-Bundler 2.4.8 test...
+===============================================================
+
+Building Docker image for Rubygems 3.4.8...
+Doing initial bundle...
+PLATFORMS
+  ruby
+
+Doing second bundle after adding gem...
+PLATFORMS
+  aarch64-linux
+
+===============================================================
+
+Building Docker image for Rubygems 3.4.9...
 Doing initial bundle...
 PLATFORMS
   ruby
@@ -38,13 +53,42 @@ Doing second bundle after adding gem...
 PLATFORMS
   aarch64-linux
 
---------------------------------------------------------------------------
-Bundler 2.4.9 test...
+```
+
+And forcing x86_64:
+
+```
+% ./run.sh
+===============================================================
+
+Building Docker image for Rubygems 3.4.7...
 Doing initial bundle...
 PLATFORMS
   ruby
 
 Doing second bundle after adding gem...
 PLATFORMS
-  aarch64-linux
+  ruby
+
+===============================================================
+
+Building Docker image for Rubygems 3.4.8...
+Doing initial bundle...
+PLATFORMS
+  ruby
+
+Doing second bundle after adding gem...
+PLATFORMS
+  x86_64-linux
+
+===============================================================
+
+Building Docker image for Rubygems 3.4.9...
+Doing initial bundle...
+PLATFORMS
+  ruby
+
+Doing second bundle after adding gem...
+PLATFORMS
+  x86_64-linux
 ```
